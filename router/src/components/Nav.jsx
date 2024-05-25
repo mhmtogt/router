@@ -11,7 +11,7 @@ const Nav = () => {
         <Link to="/instructors">Instructors</Link>
       </li>
       <li>
-        <NavLink to="/contact">Contact</NavLink>{/*Navlink ise tıklanıldığında gösteriyor */}
+        <NavLink to="/contact">Contact</NavLink>{/*Navlink ise tıklanıldığında gösteriyor elements kısmında active diye bir clası var */}
       </li>
     </ul>
   );

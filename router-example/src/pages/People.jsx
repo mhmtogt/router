@@ -1,8 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const People = () => {
   const [people, setPeople] = useState([]);
+
+   const navigate = useNavigate()//useNavgate hookunu bir değişkene bir pointere atıyoruz
 
   const getPeople = () => {
     fetch("https://reqres.in/api/users")
@@ -11,7 +14,7 @@ const People = () => {
       .catch((err) => console.log(err));
   };
   useEffect(() => {
-    getPeople();
+     getPeople();
   }, []);
 
   return (
@@ -21,10 +24,11 @@ const People = () => {
         {people.map((person) => {
           const { id, first_name, last_name, avatar } = person;
           return (
-            <div
+            <div 
               key={id}
               className=" col-sm-12 col-md-6 col-lg-4"
-              type="button"
+              type="button"//altaki navigate useNavigate hookunu kullanıyor ve avatar detayını gösteriyor
+              onClick={()=> navigate(`/people/${id}`) }// bir eventte componenet kullanamazsın Link bir componenettir
             >
               <img className="rounded" src={avatar} alt="img" />
               <h6>
