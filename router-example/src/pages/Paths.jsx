@@ -19,14 +19,16 @@ const Paths = () => {
         <button className="btn btn-success w-50" onClick={() => navigate("fs")}>
           FS
         </button>
-        <button className="btn btn-warning w-50" onClick={() => navigate("")}>
+        <button className="btn btn-warning w-50" onClick={() => navigate("aws")}>
           Aws-Devops
         </button>
       </div>
-
-      <Outlet />
+      <Outlet/>
+      <Outlet />{/*kaç tane Outle o kadar path başlamasına sebep olur  
+       pathlerden  bir tanesini basılacak  Outleti nereye basılacağını outlet belirliyor */}
     </div>
   )
 }
+
 
 export default Paths
