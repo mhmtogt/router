@@ -12,6 +12,8 @@ import FullStack from "./pages/Fullstack";
 import Aws from "./pages/Aws";
 import Frontend from "./pages/Frontend";
 import Backend from "./pages/Backend";
+import Login from "./pages/Login";
+import PrivateRouter from "./pages/PrivateRouter";
 
 function App() {
   return (
@@ -19,8 +21,13 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/people" element={<People />} />
-        <Route path="/people/:id" element={<PersonDetail />} />
+        <Route path="/people" element={<PrivateRouter />}>
+          <Route path="/people" element={<People />} />
+          <Route path="/people/:id" element={<PersonDetail />} />
+        </Route>
+
+        <Route path="/login" element={<Login />} />
+
         <Route path="/contact" element={<Contact />} />
         <Route path="/paths" element={<Paths />}>
           {/* "/"slash eklenen yerden "/slash" burada base devamına
@@ -33,6 +40,10 @@ function App() {
             <Route path="backend" element={<Backend />} />
           </Route>
           <Route path="aws" element={<Aws />} />
+
+          <Route path="" element={<Aws />} />
+          {/*burada path kısmını boş bırakmamaın sebebi 
+          path açıldığında default olarak aws sayfası  gelsin*/}
         </Route>
 
         <Route path="* " element={<NotFound />} />
