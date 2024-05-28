@@ -14,42 +14,46 @@ import Frontend from "./pages/Frontend";
 import Backend from "./pages/Backend";
 import Login from "./pages/Login";
 import PrivateRouter from "./pages/PrivateRouter";
+import { LoginContext } from "./context/LoginContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/people" element={<PrivateRouter />}>
-          <Route path="/people" element={<People />} />
-          <Route path="/people/:id" element={<PersonDetail />} />
-        </Route>
+    //LOGİN KISMINA ATMAMIZ GEREKEN ŞEYLERİ VALUE KISMINDA ATMAMIZ LAZI   M
+    <LoginContext.Provider value={{}}>
+      <BrowserRouter>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/people" element={<PrivateRouter />}>
+            <Route path="/people" element={<People />} />
+            <Route path="/people/:id" element={<PersonDetail />} />
+          </Route>
 
-        <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
 
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/paths" element={<Paths />}>
-          {/* "/"slash eklenen yerden "/slash" burada base devamına
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/paths" element={<Paths />}>
+            {/* "/"slash eklenen yerden "/slash" burada base devamına
          / ekleve stacks ekle ve direk stacks e git "/stacks/xys"  base sonra stacks sonra xys ye git 
          buna Absolute adresleme deniyor 
          
          "=fs"  bulunduğu yere göre fs adresine git demek oluyor  bu da relative dir */}
-          <Route path="fs" element={<FullStack />}>
-            <Route path="frontend" element={<Frontend />} />
-            <Route path="backend" element={<Backend />} />
-          </Route>
-          <Route path="aws" element={<Aws />} />
+            <Route path="fs" element={<FullStack />}>
+              <Route path="frontend" element={<Frontend />} />
+              <Route path="backend" element={<Backend />} />
+            </Route>
+            <Route path="aws" element={<Aws />} />
 
-          <Route path="" element={<Aws />} />
-          {/*burada path kısmını boş bırakmamaın sebebi 
+            <Route path="" element={<Aws />} />
+            {/*burada path kısmını boş bırakmamaın sebebi 
           path açıldığında default olarak aws sayfası  gelsin*/}
-        </Route>
+          </Route>
 
-        <Route path="* " element={<NotFound />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+          <Route path="* " element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </LoginContext.Provider>
   );
 }
 
