@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import Contact from "./pages/Contact";
@@ -17,9 +18,11 @@ import PrivateRouter from "./pages/PrivateRouter";
 import { LoginContext } from "./context/LoginContext";
 
 function App() {
+  const [user, setUser] = useState({ email: "", password: "" });
+
   return (
     //LOGİN KISMINA ATMAMIZ GEREKEN ŞEYLERİ VALUE KISMINDA ATMAMIZ LAZI   M
-    <LoginContext.Provider value={{}}>
+    <LoginContext.Provider value={{ user, setUser }}>
       <BrowserRouter>
         <Nav />
         <Routes>
